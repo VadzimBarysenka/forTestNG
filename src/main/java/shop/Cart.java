@@ -51,4 +51,17 @@ public class Cart {
     public double getTotalPrice() {
         return total;
     }
+
+    @Override
+    public  boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        Cart cart = (Cart) o;
+        return cartName.equals(cart.getCartName()) &&
+                total == cart.getTotalPrice();
+    }
 }

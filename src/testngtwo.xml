@@ -1,0 +1,14 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name = "Suite2">
+    <test name="RealItemTest">
+        <groups>
+            <run>
+                <include name="Test"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="shop.RealItemTest"/>
+        </classes>
+    </test>
+</suite>

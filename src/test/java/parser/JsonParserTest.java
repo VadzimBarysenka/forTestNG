@@ -8,6 +8,7 @@ import shop.Cart;
 import shop.RealItem;
 import shop.VirtualItem;
 import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.Reader;
 import java.nio.file.FileSystems;
@@ -55,7 +56,6 @@ public class JsonParserTest {
 
     @Test
     public void testWriteToFile() throws IOException {
-
         Parser parser = new JsonParser();
 
         parser.writeToFile(testCart);
@@ -70,9 +70,14 @@ public class JsonParserTest {
     @Test
     public void testReadFromFile() {
         Cart testCartTwo = new Cart(CART_NAME);
-
+        Gson gson = new Gson();
         Parser parser = new JsonParser();
-        parser.writeToFile(testCartTwo);
+
+        try (FileWriter writer = new FileWriter("src/main/resources/" + testCartTwo.getCartName() + ".json")) {
+            writer.write(gson.toJson(testCartTwo));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
         Cart expectedCart = parser.readFromFile(new File("src/main/resources/" + testCartTwo.getCartName() + ".json"));
 

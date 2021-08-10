@@ -15,15 +15,13 @@ public class RealItemTest {
     private final PrintStream originalOut = System.out;
     private final PrintStream originalErr = System.err;
 
-    @Test(groups = {"Test"})
-    @BeforeMethod
+    @BeforeMethod(groups = {"Test"})
     public void setUpStreams() {
         System.setOut(new PrintStream(outContent));
         System.setErr(new PrintStream(errContent));
     }
 
-    @Test(groups = {"Test"})
-    @AfterMethod
+    @AfterMethod(groups = {"Test"})
     public void restoreStreams() {
         System.setOut(originalOut);
         System.setErr(originalErr);

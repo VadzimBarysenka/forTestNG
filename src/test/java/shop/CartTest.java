@@ -20,8 +20,7 @@ public class CartTest {
     RealItem car = null;
     VirtualItem disk = null;
 
-    @Test(groups = {"Test"})
-    @BeforeMethod
+    @BeforeMethod(groups = {"Test"})
     public void setUp() {
         testCart = new Cart(CART_NAME);
 
@@ -32,14 +31,13 @@ public class CartTest {
 
         testCart.addRealItem(car);
     }
-    @Test(groups = {"Test"})
-    @AfterMethod
+
+    @AfterMethod(groups = {"Test"})
     public void tearDown() {
     }
 
     @Test(groups = {"Test2"})
     public void testDeleteRealItem() {
-
         testCart.deleteRealItem(car);
 
         assertEquals(testCart.getTotalPrice(), 0.0);
@@ -47,7 +45,6 @@ public class CartTest {
 
     @Test(groups = {"Test"})
     public void testGetTotalPrice() {
-
         double  actualTotal = car.getPrice() + car.getPrice()*TAX;
 
         assertEquals(testCart.getTotalPrice(), actualTotal);
